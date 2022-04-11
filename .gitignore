@@ -1,0 +1,2 @@
+# Specify directories and files for git to ignore
+node_modules
