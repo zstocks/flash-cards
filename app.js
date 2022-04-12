@@ -2,8 +2,11 @@ const express = require('express');
 
 const app = express();
 
+// Define the view engine to use in the project
+app.set('view engine', 'pug');
+
 app.get('/', (req, res) => {
- res.send('<h1>I Love Treehouse!</h1>');
+ res.render('index');
 });
 
 app.get('/hello', (req, res) => {
