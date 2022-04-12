@@ -1,0 +1,13 @@
+extends layout.pug
+
+block content
+  table
+    thead
+      tr
+        th First Name
+        th Last Name
+    tbody
+      each friend in friends
+        tr
+          td= friend.first
+          td= friend.last
