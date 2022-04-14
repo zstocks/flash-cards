@@ -1,18 +1,22 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 const app = express();
-
-const friends = [
- {first: 'Jon', last: 'Rigby'},
- {first: 'Alan', last: 'Rugg'},
- {first: 'Manami', last: 'Kishida'}
-]
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 // Define the view engine to use in the project
 app.set('view engine', 'pug');
 
+// Define Routes
 app.get('/', (req, res) => {
- res.render('index');
+    const name = req.cookies.username;
+    if (name) {
+        res.render('index', { name });
+    } else { 
+        res.redirect('/hello');
+    }
 });
 
 app.get('/cards', (req, res) => {
@@ -21,11 +25,26 @@ app.get('/cards', (req, res) => {
  res.render('card');
 });
 
-app.get('/sandbox', (req, res) => {
- res.locals.friends = friends;
- res.render('friends');
+app.get('/hello', (req, res) => {
+    const name = req.cookies.username;
+    if (name) {
+        res.redirect('/');
+    } else {
+        res.render('hello');
+    }
 });
 
+app.post('/hello', (req, res) => {
+    res.cookie('username', req.body.username);
+    res.redirect('/');
+});
+
+app.post('/goodbye', (req, res) => {
+    res.clearCookie('username');
+    res.redirect('/hello');
+});
+
+// Define server
 app.listen(3000, () => {
  console.log('The application is running on localhost:3000')
 });
