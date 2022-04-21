@@ -253,9 +253,8 @@ input {
 
 .card-flip-wrap {
   position: absolute;
-  bottom: 10px;
-  left: 20px;
-  padding-left: 500px:
+  bottom: 1px;
+  left: 8px;
 }
 
 .card-flip {
