@@ -1,7 +1,7 @@
-extends layout.pug 
+extends app
 
-block content 
-    form(id='name-collection' method='post' action='/hello')
-        label Please enter your name:
-            input(type='text' name='username' id='name')
-        button(type='submit') Submit
+block intro 
+    form(class='namecard-form' method='post' action='/hello')
+        label.namecard-prompt Please enter your name:
+        input(class='namecard-name' type='text' name='username')
+        button(class='namecard-submit' type='submit') Submit

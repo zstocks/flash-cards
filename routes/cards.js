@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+
+// Get the flashcard data and put it into variables
 const { data } = require('../data/flashcardData.json');
 const { cards } = data;
 
@@ -7,23 +9,23 @@ router.get('/:id', (req, res) => {
     const { side } = req.query;
     const { id } = req.params;
 
+    // If page is accessed without a query string, redirect using the query string '?side=question'
     if (!side) {
         return res.redirect(`/cards/${id}?side=question`);
     };
-
+    
     const name = req.cookies.username;
     const text = cards[id][side];
     const { hint } = cards[id];
-    const templateData = { id, text, name };
+    const templateData = { id, text, name, side };
 
     if (side === 'question') {
         templateData.hint = hint;
         templateData.flipLink = `answer`;
-        templateData.flipText = 'Answer';
     } else if (side === 'answer') {
         templateData.flipLink = `question`;
-        templateData.flipText = 'Question';
     } else { 
+        // Prevent any query strings where 'side' is set to anything other than 'question' or 'answer'
         return res.redirect(`/cards/${id}?side=question`);
     }
     
