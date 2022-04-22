@@ -2,10 +2,15 @@ const express = require('express');
 const router = express.Router();
 
 // Get the flashcard data and put it into variables
-const { data } = require('../data/flashcardData.json');
-const { cards } = data;
+const data = require('../data/flashcardData.json');
+
+router.get('/test', (req, res) => {
+    
+});
 
 router.get('/:id', (req, res) => {
+    const deck = req.cookies.deck;
+    const { cards } = data[deck];
     const { side } = req.query;
     const { id } = req.params;
 
@@ -33,6 +38,8 @@ router.get('/:id', (req, res) => {
 });
 
 router.get('/', (req, res) => { 
+    const deck = req.cookies.deck;
+    const { cards } = data[deck];
     // Write logic to find a random card
     const randomCard = Math.floor(Math.random() * cards.length);
     

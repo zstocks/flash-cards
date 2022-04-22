@@ -1,5 +1,5 @@
 {
-    "data": {
+    "javascript": {
         "title": "JavaScript Flashcards",
         "cards": [
             {
@@ -26,6 +26,26 @@
                 "question": "Which HTML element can contain JavaScript?",
                 "hint": "It starts with an \"s\"",
                 "answer": "<script>"
+            }
+        ]
+    },
+    "japanese": {
+        "title": "Japanese Flashcards",
+        "cards": [
+            {
+                "question": "Hello",
+                "hint": "Starts with \"K\"",
+                "answer": "Konnichiwa"
+            }
+        ]
+    },
+    "philosophy": {
+        "title": "Philosophy Flashcards",
+        "cards": [
+            {
+                "question": "Who came up with the allegory of the cave?",
+                "hint": "Student of socrates",
+                "answer": "Plato"
             }
         ]
     }
