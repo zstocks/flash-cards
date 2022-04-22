@@ -47,6 +47,4 @@ router.get('/', (req, res) => {
     res.redirect(`/cards/${randomCard}`);
 });
 
-
-
 module.exports = router;
