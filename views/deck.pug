@@ -1,0 +1,10 @@
+extends app 
+
+block intro 
+    form(class='namecard-form' method='post' action='/deck')
+        label.namecard-prompt Select a deck to study:
+        select#deck(class='namecard-name' name="deck")
+            option(value='javascript') JavaScript 
+            option(value="japanese") Japanese 
+            option(value="philosophy") Philosophy
+        button(class='namecard-submit' type='submit') Submit

@@ -31,11 +31,17 @@ router.get('/hello', (req, res) => {
 //POST
 router.post('/hello', (req, res) => {
     res.cookie('username', req.body.username);
+    res.render('deck');
+});
+
+router.post('/deck', (req, res) => {
+    res.cookie('deck', req.body.deck);
     res.redirect('/');
 });
 
 router.post('/goodbye', (req, res) => {
     res.clearCookie('username');
+    res.clearCookie('deck');
     res.redirect('/hello');
 });
 
